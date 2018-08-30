@@ -16,6 +16,9 @@ jobs:
       - run:
           name: terraform init
           command: terraform init -input=false
+      - run:
+          name: terraform plan
+          command: terraform plan -out=terraform.plan -var "access_key=${ACCESS}" -var "secret_key=${SECRET}"
 
 workflows:
   version: 2
