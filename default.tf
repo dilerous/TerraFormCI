@@ -5,13 +5,13 @@ provider "aws" {
   secret_key = "${var.secret_key}"
 }
 
-# terraform {
-#  backend "s3" {
-#    bucket = "brad.bucket"
-#    key    = "terraform.tfstate"
-#    region = "us-east-1"
-#  }
-# }
+ terraform {
+  backend "s3" {
+    bucket = "brad.bucket"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+ }
 
 resource "aws_instance" "RadditwithFile" {
   ami           = "ami-2757f631"
