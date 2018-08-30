@@ -6,7 +6,7 @@ terraform: &terraform
   working_directory: /tmp/workspace/terraform
 
 jobs:
-  validate:
+  validate_tffiles:
     <<: *terraform
     steps:
       - checkout
@@ -31,7 +31,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - validate
+      - validate_tffiles
 #      - plan_examples
 #      - approve
 #      - release
