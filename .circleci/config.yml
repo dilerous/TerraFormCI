@@ -14,6 +14,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "e7:b9:b0:11:c0:60:8d:0a:b8:20:83:0a:b7:c0:d0:48"
+
 #      - run:
 #          name: Add github.com to ~/.ssh/known_hosts
 #          command: mkdir ~/.ssh && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
