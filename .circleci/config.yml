@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: terraform plan
-          command: terraform plan
+          command: terraform plan -var "access_key=${ACCESS}" -var "secret_key=${SECRET}" 
 
 workflows:
   version: 2
