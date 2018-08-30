@@ -5,6 +5,14 @@ provider "aws" {
   secret_key = "${var.secret_key}"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "brad.bucket"
+    key    = "terraform"
+    region = "us-east-1"
+  }
+}
+
 resource "aws_instance" "RadditwithFile" {
   ami           = "ami-2757f631"
   instance_type = "t2.micro"
