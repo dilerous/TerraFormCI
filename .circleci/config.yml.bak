@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run:
+          name: Greeting
+          command: echo Hello, world.
+      - run:
+          name: Print the Current Time
+          command: date
+
+dependencies:
+  pre:
+    - wget https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip
+    - unzip terraform_0.11.3_linux_amd64.zip
+
+test:
+  override:
+    - ./terraform init
+    - ./terraform plan -out=terraform.plan -var "access_key=${ACCESS}" -var "secret_key=${SECRET}"
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./terraform apply terraform.plan

@@ -11,4 +11,15 @@ resource "aws_instance" "RadditwithFile" {
   count = 1
   key_name   = "Default"
   security_groups = ["launch-wizard-1"]
+
+
+provisioner "file" {
+    source      = "configuration.sh"
+    destination = "/tmp/configuration.sh"
+    connection {
+        type = "ssh"
+        user = "ubuntu"
+        private_key = "${file("~/.ssh/id_rsa_e7b9b011c0608d0ab820830ab7c0d048")}"
+              }
+}
 }
