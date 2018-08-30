@@ -1,29 +1,18 @@
 version: 2
+
+terraform: &terraform
+  docker:
+    - image: hashicorp/terraform:0.10.4
+  working_directory: /tmp/workspace/terraform
+
 jobs:
-  build:
-    docker:
-      - image: debian:stretch
+  validate:
+    <<: *terraform
     steps:
       - checkout
+#      - run:
+#          name: Add github.com to ~/.ssh/known_hosts
+#          command: mkdir ~/.ssh && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
-          name: Print the Current Time
-          command: date
-
-dependencies:
-  pre:
-    - wget https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip
-    - unzip terraform_0.11.3_linux_amd64.zip
-
-test:
-  override:
-    - ./terraform init
-    - ./terraform plan -out=terraform.plan -var "access_key=${ACCESS}" -var "secret_key=${SECRET}"
-
-deployment:
-  production:
-    branch: master
-    commands:
-      - ./terraform apply terraform.plan
+          name: terraform init
+          command: terraform init -input=false
