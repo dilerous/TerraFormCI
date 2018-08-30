@@ -41,6 +41,8 @@ workflows:
   build:
     jobs:
       - validate_tffiles
-      - deploy_terraform
+      - deploy_terraform:
+          requires:
+            - validate_tffiles
 #      - approve
 #      - release
