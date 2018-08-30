@@ -27,12 +27,12 @@ jobs:
           name: terraform plan
           command: terraform plan -var "access_key=${ACCESS}" -var "secret_key=${SECRET}" -out=terraform.plan
 
-   deploy:
-     <<: *terraform
-     steps:
-       - run:
-         name: terraform apply
-         command: terraform apply terraform.plan
+  deploy_terraform:
+    <<: *terraform
+    steps:
+      - run:
+          name: terraform apply
+          command: terraform apply terraform.plan
 
 
 
@@ -41,6 +41,6 @@ workflows:
   build:
     jobs:
       - validate_tffiles
-      - deploy
+      - deploy_terraform
 #      - approve
 #      - release
