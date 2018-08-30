@@ -42,3 +42,4 @@ resource "aws_instance" "RadditwithFile" {
                 private_key = "${file("~/.ssh/id_rsa_e7b9b011c0608d0ab820830ab7c0d048")}"
                       }
 }
+}
