@@ -1,2 +1,2 @@
 # TerraFormCI
-Uses Circle CI to push code to GitHub which spends up an EC2 instance.
+Uses Circle CI to push code to GitHub which spends up an EC2 instance running Raddit.
