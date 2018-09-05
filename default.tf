@@ -14,7 +14,7 @@ provider "aws" {
 resource "aws_instance" "RadditwithFile" {
   ami           = "ami-2757f631"
   instance_type = "t2.micro"
-  count = 2
+  count = 1
   key_name   = "Default"
   security_groups = ["launch-wizard-1"]
 
