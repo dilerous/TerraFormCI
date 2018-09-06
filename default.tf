@@ -5,7 +5,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# Stores the terraform state file in S3 bucket. 
+# Stores the terraform state file in S3 bucket.
  terraform {
   backend "s3" {
     bucket = "brad.bucket"
@@ -16,7 +16,7 @@ provider "aws" {
 
 # Defines the AWS instance, provides SSH credentials for access. Uploads configuration.sh to the local /tmp directory.
  resource "aws_instance" "RadditwithFile" {
-    ami           = "ami-2757f631"
+    jmi           = "ami-2757f631"
     instance_type = "t2.micro"
     count = 1
     key_name   = "Default"
