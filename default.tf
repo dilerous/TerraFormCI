@@ -16,7 +16,7 @@ provider "aws" {
 
 # Defines the AWS instance, provides SSH credentials for access. Uploads configuration.sh to the local /tmp directory.
  resource "aws_instance" "RadditwithFile" {
-    jmi           = "ami-2757f631"
+    ami           = "ami-2757f631"
     instance_type = "t2.micro"
     count = 1
     key_name   = "Default"
